@@ -37,11 +37,8 @@ public class LevelOrderZ {
         if (list.size() - 1 < level) {
             ArrayList<Integer> subList = new ArrayList<>();
             list.add(subList);
-            list.get(level).add(root.val);
-
-        } else {
-            list.get(level).add(root.val);
         }
+        list.get(level).add(root.val);
         recursion(list, root.left, level + 1);
         recursion(list, root.right, level + 1);
     }

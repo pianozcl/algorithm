@@ -9,7 +9,7 @@ package dp;
  **/
 public class LongestCommonSubstring {
     public static void main(String[] args) {
-        System.out.println(LCS("QWEWEWEPOISBAJS", "WEPISBA"));
+        System.out.println(LCS("1AB2345CD", "12345EF"));
         String[] str = new String[3];
         System.out.println("qweqweqwe".substring(0, 9));
     }
@@ -45,6 +45,6 @@ public class LongestCommonSubstring {
                 }
             }
         }
-        return str1.substring(index - max, index);
+        return max == 0 ? "-1" : str1.substring(index-max,index);
     }
 }
