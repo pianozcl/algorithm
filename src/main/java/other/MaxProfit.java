@@ -13,7 +13,7 @@ package other;
  **/
 public class MaxProfit {
     public static void main(String[] args) {
-        int[] arr={2,4,10,57,30,82,90,12,5,13};
+        int[] arr = {2, 4, 10, 57, 30, 82, 90, 12, 5, 13};
         System.out.println(maxProfit(arr));
     }
 
@@ -23,19 +23,20 @@ public class MaxProfit {
      * 例如：2，4，10，57，30，82，90，12，5，13
      * 可拆分为[2，4，10，57]   [30，82，90]   [12]    [5，13]
      * 结果为(57-2)+(90-30)+(12-12)+(13-5)=123
+     *
      * @param prices
      * @return
      */
-    public static int maxProfit (int[] prices) {
-        int start=0;
-        int max=0;
-        for(int i=1;i<prices.length;i++){
-            if(prices[i]<prices[i-1]){
-                max=max+(prices[i-1]-prices[start]);
-                start=i;
+    public static int maxProfit(int[] prices) {
+        int start = 0;
+        int max = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < prices[i - 1]) {
+                max = max + (prices[i - 1] - prices[start]);
+                start = i;
             }
         }
         //由于是根据元素是否变小，来判断是否为子数组最后元素的坐标。因此在循环中最后的升序数组未被累加，返回时单独加上
-        return max+prices[prices.length-1]-prices[start];
+        return max + prices[prices.length - 1] - prices[start];
     }
 }
