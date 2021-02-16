@@ -45,4 +45,9 @@ public class MaxInWindows {
         }
         return list;
     }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{9, 11};
+        System.out.println(new MaxInWindows().maxInWindows(arr, 2));
+    }
 }

@@ -44,6 +44,7 @@ public class ThreadPoolTest {
 //        System.out.println(Runtime.getRuntime().availableProcessors());
 //        Executors.newFixedThreadPool(5);
         ExecutorService executorService1 = Executors.newCachedThreadPool();
+        Executors.newFixedThreadPool(10);
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
         scheduledExecutorService.schedule(new Runnable() {
             @Override
