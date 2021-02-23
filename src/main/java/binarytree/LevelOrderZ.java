@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Vector;
 
 /**
  * @author : chenliangzhou
@@ -59,12 +60,16 @@ public class LevelOrderZ {
         while (!queue.isEmpty()) {
             LinkedList<Integer> subQueue = new LinkedList();
             for (int i = queue.size(); i > 0; i--) {
+                //poll当前层的同时，下面queue add当前节点子节点，整个循环相当于add下一层
                 TreeNode node = queue.poll();
+
+                //当前层添加到sub里面
                 if ((list.size() & 1) != 0) {
                     subQueue.addFirst(node.val);
                 } else {
                     subQueue.addLast(node.val);
                 }
+                //利用队列先进先出的特性
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -72,6 +77,7 @@ public class LevelOrderZ {
                     queue.add(node.right);
                 }
             }
+            //循环结束，sub刚好添加一层，加入list
             ArrayList<Integer> arrayList = new ArrayList(subQueue);
             list.add(arrayList);
         }
@@ -87,7 +93,7 @@ public class LevelOrderZ {
         treeNode.right.left = new TreeNode(5);
         treeNode.right.right = new TreeNode(6);
 
-        ArrayList<ArrayList<Integer>> arrayLists = new LevelOrderZ().Print(treeNode);
+        ArrayList<ArrayList<Integer>> arrayLists = new LevelOrderZ().Print2(treeNode);
         System.out.println(JSON.toJSONString(arrayLists));
     }
 }
