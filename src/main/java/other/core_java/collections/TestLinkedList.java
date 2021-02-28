@@ -1,4 +1,4 @@
-package other.core_java.test_api;
+package other.core_java.collections;
 
 import basestructure.TreeNode;
 
