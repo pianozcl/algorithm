@@ -4,6 +4,15 @@ package sort;
  * @author : chenliangzhou
  * create at:  2020/10/6  4:52 PM
  * @description: 归并排序：分治法，将数组分左右两部分递归拆分合并
+ *
+ * 递归时间复杂度分析
+ * master公式
+ * T(N) = a * T(N/b) + O(N^d)
+ * log(b, a) > d -> O(N ^ log (b, a))
+ * log(b, a) = d -> O(N ^ d * logN)
+ * log(b, a) > d -> O(N ^ d)
+ *
+ * 归并排序：N*logN
  **/
 public class MergeSort {
 
@@ -33,13 +42,13 @@ public class MergeSort {
             int mid=(l+r)/2;
 
             //递归排序左边的数组
-            mergeSort(arr,l,mid,help);
+            mergeSort(arr,l,mid,help);//T(N/2)
 
             //递归排序右边的数组
-            mergeSort(arr,mid+1,r,help);
+            mergeSort(arr,mid+1,r,help);//T(N/2)
 
             //合并以上两个排好序的数组
-            merge(arr,l,mid,r,help);
+            merge(arr,l,mid,r,help);//T(N) = 2T(N/2) + O(N)
         }
     }
 

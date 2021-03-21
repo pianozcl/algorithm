@@ -65,6 +65,20 @@ public class ThreadPoolTest {
                 }
             });
         }
+    }
 
+    public static class SerialExecutor implements Executor {
+
+        Executor executor;
+
+        @Override
+        public void execute(Runnable command) {
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("heheda");
+                }
+            });
+        }
     }
 }

@@ -29,6 +29,7 @@ public class TestSemaphore {
             try {
                 semaphore.acquire();
                 System.out.println(Thread.currentThread().getName());
+                Thread.sleep(5000);
                 semaphore.release();
             } catch (InterruptedException e) {
                 e.printStackTrace();
