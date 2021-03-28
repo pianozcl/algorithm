@@ -6,7 +6,7 @@ package binarysearch;
  * @description: 实现函数 int sqrt(int x). 计算并返回x的平方根（向下取整）
  **/
 public class Sqrt {
-    public int sqrt (int x) {
+    public static int sqrt (int x) {
         // write code here
         int l = 0;
         int r = x;
@@ -21,5 +21,9 @@ public class Sqrt {
             }
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sqrt(300));
     }
 }

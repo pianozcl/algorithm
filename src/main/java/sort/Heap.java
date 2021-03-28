@@ -11,11 +11,11 @@ import java.util.Random;
  **/
 public class Heap {
     public static void main(String[] args) {
-//        int[] arr = new int[]{1,5,2,7,4,3};
-//
-//        heapSort(arr);
-//        System.out.println(JSON.toJSONString(arr));
-        vertify();
+        int[] arr = new int[]{1,5,2,7,4,3};
+        //int[] arr2 = new int[]{5,2,3,1};
+        heapSort(arr);
+
+        //vertify();
     }
 
     public static void heapSort(int[] arr) {
@@ -76,6 +76,7 @@ public class Heap {
     public static void heapify(int[] arr, int index, int heapSize) {
         //当前index节点左节点下标, left + 1即为右节点
         int left = index * 2 + 1;
+        System.out.println("");
         while (left < heapSize) {
             //获取左右节点最大节点下标
             int largest = left + 1 < heapSize && arr[left + 1] > arr[left] ? left + 1 : left;
@@ -106,7 +107,7 @@ public class Heap {
      * @return
      */
     public static void vertify() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
             int[][] arrs = randomArray();
             heapSort(arrs[0]);
             heapSort2(arrs[1]);

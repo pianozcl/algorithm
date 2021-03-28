@@ -1,23 +1,44 @@
 package sort;
 
+import com.alibaba.fastjson.JSON;
+
+import java.util.Arrays;
+import java.util.Random;
+
 /**
  * @author : chenliangzhou
  * create at:  2020/11/15  10:37 PM
- * @description: 快速排序
+ * @description: 快速排序，荷兰国旗快排
  **/
 public class QuickSort {
 
     public static void main(String[] args) {
-        int arr[] = {884688278,387052570,77481420,537616843,659978110,215386675,604354651,64838842,830623614,544526209,292446044,570872277,946770900,411203381,445747969,480363996,31693639,303753633,261627544,884642435,978672815,427529125,111935818,109686701,714012242,691252458,230964510,340316511,917959651,544069623,193715454,631219735,219297819,151485185,986263711,805374069,915272981,493886311,970466103,819959858,733048764,393354006,631784130,70309112,513023688,17092337,698504118,937296273,54807658,353487181,82447697,177571868,830140516,536343860,453463919,998857732,280992325,13701823,728999048,764532283,693597252,433183457,157540946,427514727,768122842,782703840,965184299,586696306,256184773,984427390,695760794,738644784,784607555,433518449,440403918,281397572,546931356,995773975,738026287,861262547,119093579,521612397,306242389,84356804,42607214,462370265,294497342,241316335,158982405,970050582,740856884,784337461,885254231,633020080,641532230,421701576,298738196,918973856,472147510,169670404};
-        quickSort(arr, 0, arr.length - 1);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+        int[] arr1 = new int[1000];
+        int[] arr2 = new int[1000];
+
+        Random random = new Random();
+        for (int i = 0; i < 1000; i++) {
+            int r = random.nextInt(100000);
+            arr1[i] = r;
+            arr2[i] = r;
         }
+
+        quickSort(arr1, 0, arr1.length - 1);
+        Arrays.sort(arr2);
+
+
+
+        System.out.println(JSON.toJSONString(arr1));
+        System.out.println();
+        System.out.println(JSON.toJSONString(arr2));
+
+        System.out.println(JSON.toJSONString(arr1).equals(JSON.toJSONString(arr2)));
 
     }
 
     /**
      * 定义一个划分方法，把一个数组小于num（基准数）的放左边，等于num的放中间，大于num的放右边
+     * 小于区域推动等于区域向右，等于区域到大于区域待定，终止curr（l） = more
      * @param arr   原始数组
      * @param l 数组左边界
      * @param r 数组右边界
@@ -33,24 +54,19 @@ public class QuickSort {
         while (l < more) {
             if (arr[l] < num) {
                 // less右移，这里要先右移再交换，因为less初始值为-1
-                less++;
-
                 // l和less下标数进行交换
                 int temp = arr[l];
-                arr[l] = arr[less];
+                arr[l++] = arr[++less];
                 arr[less] = temp;
 
-                // l下边右移
-                l++;
             } else if (arr[l] > num) {
 
                 // 大于区域的边界左移
-                more--;
                 int temp = arr[l];
-                arr[l] = arr[more];
-
-                // l下标数值发生变化，需要再次判断新数值，因此l下标停一步
+                arr[l] = arr[--more];
                 arr[more] = temp;
+                // l下标数值发生变化，需要再次判断新数值，因此l下标停一步
+
             } else {
                 // 当l下标数值等于num，l右移继续遍历
                 l++;

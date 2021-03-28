@@ -8,6 +8,11 @@ import java.lang.reflect.Method;
  * @author : chenliangzhou
  * create at:  2021/2/23  9:31 PM
  * @description: 痛过反射获取class
+ *
+ * 反射使Java具有动态语言特性，在运行时获取类信息，并能够操作属性和方法
+ *
+ * 正常创建对象 引入包名》创建对象》取得对象实例
+ * 反射 实例对象》getClass方法》获取完整包名类名
  **/
 public class GetClassByReflect {
 
@@ -72,5 +77,11 @@ public class GetClassByReflect {
         for (Method declaredMethod : declaredMethods) {
             System.out.println(declaredFields);
         }
+
+
+        Class integerClass1 = Integer.class;
+        Class<Integer> integerClass2 = Integer.TYPE;
+        System.out.println(integerClass1.hashCode());
+        System.out.println(integerClass2.hashCode());
     }
 }
