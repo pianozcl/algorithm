@@ -19,4 +19,8 @@ public class TestStructure {
         treeNode.right.right = new TreeNode(7);
         return treeNode;
     }
+
+    public static void inOrderPrint() {
+
+    }
 }

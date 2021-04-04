@@ -18,13 +18,13 @@ public class HasSubtree {
     }
 
     /**
-     * 比较root1，root2是否相同
+     * 比较root1，是否包含root2
      * @param root1
      * @param root2
      * @return
      */
     boolean recur(TreeNode root1, TreeNode root2) {
-        //root2直到为null，说明当前递归链路没有不想的情况，结合最后一行与运算，意味着所有的链路都一样整体才会返回true
+        //root2直到为null，说明当前递归链路没有不相等情况，结合最后一行与运算，意味着所有的链路都一样整体才会返回true
         if (root2 == null) {
             return true;
         }
