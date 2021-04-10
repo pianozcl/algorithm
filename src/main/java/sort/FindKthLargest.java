@@ -42,7 +42,7 @@ public class FindKthLargest {
      * @return
      */
     public static int partition(int[] arr, int begin, int end) {
-        //counter记录小于基准数到边界下标
+        //counter记录小于基准数的边界下标
         int pivot = end, counter = begin;
         for (int i = begin; i < end; i++) {
             if (arr[i] < arr[pivot]) {

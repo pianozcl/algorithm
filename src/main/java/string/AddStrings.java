@@ -36,6 +36,7 @@ public class AddStrings {
     public static void main(String[] args) {
         AddStrings addStrings = new AddStrings();
         String solve = addStrings.solve("733064366", "459309139");
+        System.out.println('9' - '0');
         System.out.println(solve);
     }
 }

@@ -1,5 +1,6 @@
 package stackqueue;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -47,5 +48,12 @@ public class MedianFinder {
         }
 
         System.out.println(medianFinder.GetMedian());
+        new PriorityQueue<>(new Comparator<Integer>() {
+
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });
     }
 }

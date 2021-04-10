@@ -44,8 +44,8 @@ public class Heap {
         int heapSize = arr.length;
         swap(arr, 0, --heapSize);
         while (heapSize > 0) {
-            heapify(arr, 0, heapSize);
-            swap(arr, 0, --heapSize);
+            heapify(arr, 0, heapSize);      //每次heapify，下沉的过程中，把最大值置换到堆顶
+            swap(arr, 0, --heapSize);           //交换，把最大值放到末尾
         }
     }
 
@@ -76,7 +76,6 @@ public class Heap {
     public static void heapify(int[] arr, int index, int heapSize) {
         //当前index节点左节点下标, left + 1即为右节点
         int left = index * 2 + 1;
-        System.out.println("");
         while (left < heapSize) {
             //获取左右节点最大节点下标
             int largest = left + 1 < heapSize && arr[left + 1] > arr[left] ? left + 1 : left;

@@ -51,19 +51,20 @@ public class LongestCommonSubsequence {
      * @return
      */
     public static int longestCommonSubsequenceDP(String text1, String text2) {
-        int m=text1.length(),n=text2.length();
-        int[][] dp=new int[m+1][n+1];
+        int m = text1.length();
+        int n = text2.length();
+        int[][] dp = new int[m + 1][n + 1];     //dp table第一行，第一列初始化为0。从第二行，第二列开始计算
 
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                if(text1.charAt(i)==text2.charAt(j)){
-                    dp[i+1][j+1]=dp[i][j]+1;
-                }else {
-                    dp[i+1][j+1]=Math.max(dp[i][j+1],dp[i+1][j]);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (text1.charAt(i) == text2.charAt(j)) {
+                    dp[i + 1][j + 1] = dp[i][j] + 1;        //当前下标两个字符元素相同，则当前二维数组下标dp值为左上方值加1
+                } else {
+                    dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);    //字符不同，则取上边和左边最大的那个
                 }
             }
         }
-        return dp[m][n];
+        return dp[m][n];            //因为从[1][1]开始计算，所以返回m，n
     }
 
 }

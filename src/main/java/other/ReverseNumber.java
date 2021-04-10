@@ -7,10 +7,7 @@ package other;
  **/
 public class ReverseNumber {
     public static void main(String[] args) {
-        System.out.println(Integer.toBinaryString(Integer.MIN_VALUE - 0x7fffffff));
-        System.out.println(0x7fffffff);
-        System.out.println(Integer.MIN_VALUE - 0xffffffff);
-        System.out.println(reverse(-12345678));
+        System.out.println(reverse(-321));
     }
     public static int reverse (int x) {
         int p=x;

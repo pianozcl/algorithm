@@ -10,20 +10,20 @@ import java.util.HashSet;
 public class LengthOfLongestSubstring {
 
     public int lengthOfLongestSubstring(String s) {
-        HashSet set = new HashSet();
+        if (s == null || s == "") {
+            return 0;
+        }
+        HashSet<Character> set = new HashSet();
         int max = 0;
-        int l = 0, r = 0;
+        int l = 0;  //记录无重复左边界
         for (int i = 0; i < s.length(); i++) {
-            while (set.contains(s.charAt(i)) && l <= r) {
-                set.remove(s.charAt(l));
-                l++;
+            while (set.contains(s.charAt(i))) {     //包含重复，则从左边界依次remove
+                set.remove(s.charAt(l++));
             }
             if (!set.contains(s.charAt(i))) {
                 set.add(s.charAt(i));
-                max = Math.max(max, r - l + 1);
-                r++;
+                max = max > set.size() ? max : set.size();
             }
-
         }
         return max;
     }

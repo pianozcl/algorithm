@@ -20,7 +20,7 @@ public class LongestCommonSubstring {
         int max = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (str1.charAt(i) == str2.charAt(j)) {
+                if (str1.charAt(i) == str2.charAt(j)) {     //这里不需要判断不等的情况，因为dp初始化为0，假如不等，不做任何处理从0开始重新计算
                     dp[i + 1][j + 1] = dp[i][j] + 1;
                     max = Math.max(max, dp[i + 1][j + 1]);
                 }

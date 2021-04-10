@@ -2,7 +2,13 @@ package other;
 
 import basestructure.TreeLinkNode;
 import basestructure.TreeNode;
+import com.alibaba.fastjson.JSON;
+import sun.jvm.hotspot.debugger.Page;
 import util.test.TestStructure;
+
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Stack;
 
 /**
  * @author : chenliangzhou
@@ -11,35 +17,42 @@ import util.test.TestStructure;
  **/
 public class Test {
     public static void main(String[] args) {
-        TreeNode treeNode = new TreeNode(0);
-        treeNode.left = new TreeNode(1);
-        treeNode.right = new TreeNode(2);
-        treeNode.right.right = new TreeNode(3);
-
-        TreeNode treeNode1 = new TreeNode(0);
-        treeNode1.left = new TreeNode(2);
-        treeNode1.right = new TreeNode(1);
-        treeNode1.left.left = new TreeNode(3);
-
-
+        System.out.println(sub("123123","1233123"));
     }
 
 
-//    int count = 0;
-//    public TreeNode kth(TreeNode treeNode, int k) {
-//        if (treeNode == null) {
-//            return null;
-//        }
-//        TreeNode l = kth(treeNode.left, k);
-//        if (l != null) {
-//            return l;
-//        }
-//        count++;
-//        if (count == k) {
-//            return treeNode;
-//        }
-//
-//        kth(treeNode)
-//    }
+    public static int sub(String s1, String s2) {
+        if (s1 == null || s2 == null) {
+            return 0;
+        }
+        int m = s1.length();
+        int n = s2.length();
+        int[][] dp = new int[m + 1][n + 1];
+        int max = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (s1.charAt(i) == s2.charAt(j)) {
+                    dp[i + 1][j + 1] = dp[i][j] + 1;
+                    max = Math.max(max, dp[i + 1][j + 1]);
+                }
+            }
+        }
+        return max;
+    }
 
+
+
+
+
+
+
+
+
+
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 }

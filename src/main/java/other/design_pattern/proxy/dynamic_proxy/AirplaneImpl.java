@@ -10,4 +10,9 @@ public class AirplaneImpl implements Airplane {
     public void fly() {
         System.out.println("flying........");
     }
+
+    @Override
+    public void land(String location) {
+        System.out.println("landing" + location);
+    }
 }
