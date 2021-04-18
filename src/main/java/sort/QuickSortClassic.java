@@ -9,6 +9,9 @@ import java.util.Random;
  * @author : chenliangzhou
  * create at:  2021/3/24  8:47 PM
  * @description: 经典快排，基准数（prvot）只有一个元素
+ *
+ * 划分logn次，每次划分移动的元素个数平均是n个，所以平均时间复杂度为logn*n
+ * 最差情况，假如说数组本来就是有序的，每次基准树都在一边，需要划分n次，最坏时间复杂度就是n^2
  **/
 public class QuickSortClassic {
 

@@ -26,10 +26,11 @@ public class ReverseGroup {
             len ++;
             head = head.next;
         }
+
         for (int i = 0; i < len / k; i++) {
             for (int j = 0; j < k - 1; j++) {
                 temp = curr.next;
-                curr.next = temp.next;
+                curr.next = temp.next;  //一轮循环完，curr.next刚好是下一组k的头
                 temp.next = pre.next;
                 pre.next = temp;
             }

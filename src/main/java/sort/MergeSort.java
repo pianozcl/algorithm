@@ -13,6 +13,8 @@ package sort;
  * log(b, a) > d -> O(N ^ d)
  *
  * 归并排序：N*logN
+ *
+ * merge操作需要logn次，每次merge，平均移动元素的时间复杂度是n，所以整体是n
  **/
 public class MergeSort {
 

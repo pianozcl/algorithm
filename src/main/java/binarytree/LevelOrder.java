@@ -45,17 +45,17 @@ public class LevelOrder {
         recur(list, root.right, level + 1);
     }
 
-    ArrayList<ArrayList<Integer> > Print2(TreeNode pRoot) {
+    public List<List<Integer>> levelOrder(TreeNode root) {
         LinkedList<TreeNode> queue = new LinkedList();
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-        if (pRoot != null) {
-            queue.add(pRoot);
+        List<List<Integer>> list = new ArrayList<>();
+        if (root != null) {
+            queue.add(root);
         }
         while (!queue.isEmpty()) {
-            ArrayList<Integer> subList = new ArrayList<>();
+            List<Integer> sub = new ArrayList();
             for (int i = queue.size(); i > 0; i--) {
                 TreeNode node = queue.poll();
-                subList.add(node.val);
+                sub.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -63,7 +63,7 @@ public class LevelOrder {
                     queue.add(node.right);
                 }
             }
-            list.add(subList);
+            list.add(sub);
         }
         return list;
     }
@@ -77,7 +77,6 @@ public class LevelOrder {
         treeNode.right.left = new TreeNode(5);
         treeNode.right.right = new TreeNode(6);
 
-        ArrayList<ArrayList<Integer>> arrayLists = new LevelOrder().Print2(treeNode);
-        System.out.println(JSON.toJSONString(arrayLists));
+        new LevelOrder().levelOrder(treeNode);
     }
 }

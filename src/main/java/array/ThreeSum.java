@@ -23,6 +23,11 @@ public class ThreeSum {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
+
+            //去重错误的写法，例如-4, -1, -1, 0, 1, 2，必须从第一个-1开始。不能从第二个-1开始，那样就会丢失[-1,-1,2]这个组合
+//            if (i < nums.length - 1 && nums[i] == nums[i + 1]) {
+//                continue;
+//            }
             int l = i + 1, r = nums.length - 1;
             int one = nums[i];
             while (l < r) {
@@ -52,11 +57,8 @@ public class ThreeSum {
 
     public static void main(String[] args) {
         int[] arr = new int[]{-1,0,1,2,-1,-4};
-        int[] arr1 = new int[]{0, 0, 0};
         List<List<Integer>> lists = new ThreeSum().threeSum(arr);
 
-        List<List<Integer>> lists1 = new ThreeSum().threeSum(arr1);
         System.out.println(JSON.toJSONString(lists));
-        System.out.println(lists1);
     }
 }

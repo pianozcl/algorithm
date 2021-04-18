@@ -18,6 +18,11 @@ public class Heap {
         //vertify();
     }
 
+    /**
+     * 堆排比较的几乎都不是相邻元素，对cache极不友好，这才是很少被采用的原因。
+     * 数学上的时间复杂度不代表实际运行时的情况
+     * @param arr
+     */
     public static void heapSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;

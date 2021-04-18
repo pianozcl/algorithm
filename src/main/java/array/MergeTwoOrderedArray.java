@@ -19,24 +19,21 @@ public class MergeTwoOrderedArray {
     }
 
 
-    public static void merge(int A[], int m, int B[], int n) {
-        int[] help=new int[m+n];
-        int i=0,pA=0,pB=0;
-        while (i<(m+n)){
-            if(pA<m&&pB<n){
-                help[i++]=A[pA]<B[pB]?A[pA++]:B[pB++];
-            }
-            if(pA>=m&&pB<n){
-                help[i++]=B[pB++];
-            }
-            else if(pB>=n){
-                help[i++]=A[pA++];
-            }
-
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int[] help = new int[m + n];
+        int i = 0, j = 0, p = 0;
+        while (i < m && j < n) {
+            help[p++] = nums1[i] < nums2[j] ? nums1[i++] : nums2[j++];
+        }
+        while (i < m) {
+            help[p++] = nums1[i++];
+        }
+        while (j < n) {
+            help[p++] = nums2[j++];
         }
 
-        for(int j=0;j<help.length;j++){
-            A[j]=help[j];
+        for (int k = 0; k < m + n; k++) {
+            nums1[k] = help[k];
         }
     }
 }

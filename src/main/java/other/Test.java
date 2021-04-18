@@ -17,7 +17,11 @@ import java.util.Stack;
  **/
 public class Test {
     public static void main(String[] args) {
-        System.out.println(sub("123123","1233123"));
+        System.out.println(Integer.MIN_VALUE);
+        System.out.println(Integer.MAX_VALUE);
+
+        System.out.println(Integer.MAX_VALUE / 10);
+        System.out.println(Integer.MAX_VALUE % 10);
     }
 
 

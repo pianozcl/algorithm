@@ -9,19 +9,20 @@ public class ReverseNumber {
     public static void main(String[] args) {
         System.out.println(reverse(-321));
     }
+
     public static int reverse (int x) {
-        int p=x;
-        int ans=0;
-        while (x!=0){
-            int tail=x%10;
-            ans=ans*10+tail;
-            x=x/10;
-        }
+        int rev = 0;
+        while (x != 0) {
+            int pop = x % 10;
+            x /= 10;
 
-        if((p>0&&ans<0)||((p<0&&ans>0))){
-            return 0;
+            //预判断是否大于Integer最大值2147483647，和是否小于Integer最小值-2147483648
+            //例如判断最大边界：rev > Integer.MAX_VALUE / 10  是否大于 214748364，如果等于214748364，再判断最后一位是否越界
+            if ((rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) || (rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && pop < -8))) {
+                return 0;
+            }
+            rev = rev * 10 + pop;
         }
-
-        return ans;
+        return rev;
     }
 }

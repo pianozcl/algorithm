@@ -1,8 +1,7 @@
 package other.spring;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.*;
+import other.spring.configuration_annotation.TestBean;
 
 /**
  * @author : chenliangzhou
@@ -14,4 +13,14 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy //开启AspectJ
 public class AppConfig {
 
+
+    public AppConfig() {
+        System.out.println("AppConfig初始化");
+    }
+
+    @Bean(initMethod = "start", destroyMethod = "cleanUp")
+    @Scope("prototype")
+    public TestBean testBean() {        //TestBean初始化指定bean加载到IOC容器，效果等同于TestBean上加@Component
+        return new TestBean();
+    }
 }
