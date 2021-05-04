@@ -1,4 +1,4 @@
-package other.concurrency;
+package other.concurrency.util.exclusivelock;
 
 import java.util.concurrent.locks.ReentrantLock;
 

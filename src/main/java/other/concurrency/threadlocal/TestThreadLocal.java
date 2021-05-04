@@ -1,4 +1,4 @@
-package other.concurrency;
+package other.concurrency.threadlocal;
 
 /**
  * @author : chenliangzhou
@@ -15,12 +15,13 @@ public class TestThreadLocal {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(threadLocal.get());  //1
+            System.out.println(Thread.currentThread().getName() + "=======" + threadLocal.get()); //Thread-0=======1
         }).start();
 
         //第二个线程改变threadLocal值，并不会影响第一个线程打印值，因为threadlocal是线程私有的
         new Thread(() -> {
             threadLocal.set(2);
+            System.out.println(Thread.currentThread().getName() + "========" + threadLocal.get());  //Thread-1========2
         }).start();
     }
 }

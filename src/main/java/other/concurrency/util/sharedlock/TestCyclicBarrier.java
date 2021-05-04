@@ -1,4 +1,4 @@
-package other.concurrency;
+package other.concurrency.util.sharedlock;
 
 import java.util.Random;
 import java.util.concurrent.CyclicBarrier;

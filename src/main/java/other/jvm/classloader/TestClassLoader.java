@@ -1,4 +1,4 @@
-package other.jvm;
+package other.jvm.classloader;
 
 /**
  * @author : chenliangzhou
@@ -21,7 +21,7 @@ public class TestClassLoader {
         System.out.println(parent.getParent());     //null
 
 
-        ClassLoader classLoader = Class.forName("other.jvm.TestClassLoader").getClassLoader();
+        ClassLoader classLoader = Class.forName("other.jvm.classloader.TestClassLoader").getClassLoader();
         System.out.println(classLoader); //Launcher$AppClassLoader
 
         ClassLoader classLoader1 = Class.forName("java.lang.Object").getClassLoader();

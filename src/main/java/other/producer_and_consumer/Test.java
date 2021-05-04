@@ -6,7 +6,7 @@ package other.producer_and_consumer;
  * @description: 生产者消费者
  **/
 public class Test {
-    private static Integer count = 0;
+    private static int count = 0;
     private static final Integer FULL = 10;
     private static String LOCK = "lock";
 

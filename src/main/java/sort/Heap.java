@@ -82,7 +82,7 @@ public class Heap {
         //当前index节点左节点下标, left + 1即为右节点
         int left = index * 2 + 1;
         while (left < heapSize) {
-            //获取左右节点最大节点下标
+            //获取左右节点最大节点下标。假如left + 1 < heapSize不成立，larest就等于left。所以不能写成arr[left] > arr[left + 1] ? left : left + 1;
             int largest = left + 1 < heapSize && arr[left + 1] > arr[left] ? left + 1 : left;
 
             //当前节点跟左右节点中最大的比较（获取最大值下标）

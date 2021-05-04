@@ -34,7 +34,7 @@ public class LevelOrder {
         if (root == null) {
             return;
         }
-        if (level <= list.size() - 1) {
+        if (level < list.size()) {
             list.get(level).add(root.val);
         } else {
             ArrayList<Integer> subList = new ArrayList<>();
@@ -77,6 +77,7 @@ public class LevelOrder {
         treeNode.right.left = new TreeNode(5);
         treeNode.right.right = new TreeNode(6);
 
-        new LevelOrder().levelOrder(treeNode);
+        ArrayList<ArrayList<Integer>> print = new LevelOrder().Print(treeNode);
+        System.out.println(JSON.toJSONString(print));
     }
 }

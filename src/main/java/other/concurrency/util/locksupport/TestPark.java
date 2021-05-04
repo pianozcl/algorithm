@@ -1,4 +1,4 @@
-package other.concurrency;
+package other.concurrency.util.locksupport;
 
 import java.util.concurrent.locks.LockSupport;
 
@@ -30,6 +30,7 @@ public class TestPark {
             e.printStackTrace();
         }
 
+        //
         LockSupport.unpark(t1);
 
 
@@ -37,6 +38,7 @@ public class TestPark {
 
     public static void testPark() {
         System.out.println("t1---1");
+        //park直接挂起线程，跟Object.wait不同的是，wait在同步代码块使用，作用与锁监视器。
         LockSupport.park();
         System.out.println("t1---2");
     }

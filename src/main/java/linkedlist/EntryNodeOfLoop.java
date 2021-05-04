@@ -33,30 +33,32 @@ public class EntryNodeOfLoop {
      * 双指针解法，快指针每次走两步，慢指针每次走一步，如果相交说明必有环
      *
      * 相交之后，使其中一个指针重新指向头，一个指针保持原位置。两个指针每次均走一步，到第二次相交位置即是环到入口点
-     * @param pHead
+     * @param head
      * @return
      */
-    public ListNode entryNodeOfLoop2(ListNode pHead)
-    {
-        if (pHead == null || pHead.next == null) {
+    public static ListNode detectCycle(ListNode head) {
+        if (head == null || head.next == null) {
             return null;
         }
-        ListNode fast = pHead;
-        ListNode slow = pHead;
-
+        ListNode slow = head;
+        ListNode fast = head;
         while (fast != null) {
             slow = slow.next;
-            fast = fast.next.next;
+            if (fast.next != null) {
+                fast = fast.next.next;
+            } else {
+                return null;
+            }
             if (slow == fast) {
-                slow = pHead;
-                break;
+                slow = head;
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
             }
         }
-        while (slow != fast) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-        return fast;
+        return null;
     }
 
     public boolean hasCycle(ListNode head) {
