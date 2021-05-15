@@ -2,6 +2,7 @@ package other.spring;
 
 import org.springframework.context.annotation.*;
 import other.spring.configuration_annotation.TestBean;
+import other.spring.import_annotation.DogBean;
 
 /**
  * @author : chenliangzhou

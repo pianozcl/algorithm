@@ -34,6 +34,8 @@ public class IsPalindrome {
         while (p != 0) {
             int pop = p % 10;
             p /= 10;
+
+            //Integer.MAX_VALUE最后一位为7。
             if (rev > 0x7fffffff / 10 || (rev == 0x7fffffff / 10 && pop > 7)) {
                 return false;
             }
@@ -48,5 +50,13 @@ public class IsPalindrome {
 
     public static void main(String[] args) {
         System.out.println(isPalindrome(121));
+
+        System.out.println(Integer.MAX_VALUE); //2147483647
+
+        int x = 1;
+        for (int i = 0; i < 31; i++) {
+            x *= 2;
+        }
+        System.out.println(x - 1); //2147483647
     }
 }
