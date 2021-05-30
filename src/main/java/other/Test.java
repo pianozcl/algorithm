@@ -16,15 +16,24 @@ import java.util.*;
  **/
 public class Test {
     public static void main(String[] args) {
+        TreeNode p = new TreeNode(0);
+        p.left = new TreeNode(1);
+        p.right = new TreeNode(2);
+
+        //mirror(p);
+
+        System.out.println(p.right.val);
     }
 
-    public int max(int[] arr) {
-        int cost = 0x7fffffff;
-        int profit = 0;
-        for (int i = 0; i < arr.length; i++) {
-            cost = Math.min(cost, arr[i]);
-            profit = Math.max(profit, profit - cost);
+    public static void pre(TreeNode root) {
+        if (root == null) {
+            return;
         }
-        return profit;
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.poll();
+            System.out.println();
+        }
     }
 }
