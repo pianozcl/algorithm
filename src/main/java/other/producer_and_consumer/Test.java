@@ -15,7 +15,7 @@ public class Test {
         public void run() {
             for (int i = 0; i < 10; i++) {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(300);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -39,7 +39,7 @@ public class Test {
         public void run() {
             for (int i = 0; i < 10; i++) {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -66,10 +66,6 @@ public class Test {
         new Thread(test.new Producer()).start();
         new Thread(test.new Producer()).start();
 
-        new Thread(test.new Consumer()).start();
-        new Thread(test.new Consumer()).start();
-        new Thread(test.new Consumer()).start();
-        new Thread(test.new Consumer()).start();
         new Thread(test.new Consumer()).start();
     }
 
