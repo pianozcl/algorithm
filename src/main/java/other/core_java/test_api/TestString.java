@@ -7,9 +7,17 @@ package other.core_java.test_api;
  **/
 public class TestString {
     public static void main(String[] args) {
-        String s = "";
-        s = "123";
+        String s = "{\"name\" :\"qqqq\"}";
+        String s1 = "{\"name\" : \"qqqq\"}";
+        System.out.println(s.length());
+        System.out.println(s1.length());
 
-        System.out.println(s);
+        String s2 = "1,2,3,";
+
+        String[] split = s2.split(",");
+        System.out.println(split.length);
+        for (String s3 : split) {
+            System.out.println(s3);
+        }
     }
 }
