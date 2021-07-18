@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSON;
 import sun.jvm.hotspot.debugger.Page;
 import util.test.TestStructure;
 
+import java.beans.IntrospectionException;
 import java.util.*;
 
 /**
@@ -16,36 +17,40 @@ import java.util.*;
  **/
 public class OtherTest {
     public static void main(String[] args) {
-        int[] arr = new int[]{1,6,3,7,2,3,7};
-        sort(arr, 0, arr.length - 1);
-        System.out.println(JSON.toJSONString(arr));
-    }
-
-    public static void sort(int[] arr, int begin, int end) {
-        if (begin >= end) {
-            return;
-        }
-        int pivot = partition(arr, begin, end);
-        sort(arr, begin, pivot - 1);
-        sort(arr, pivot + 1, end);
-    }
-
-
-    public static int partition(int[] arr, int begin, int end) {
-        int counter = begin, pivot = end;
-        for (int i = begin; i < end; i++) {
-            if (arr[i] < arr[pivot]) {
-                swap(arr, counter++, i);
+        TreeNode treeNode = TestStructure.fullBinaryTree();
+        List<List<Integer>> lists = levelOrder(treeNode);
+        for (int i = 0; i < lists.size(); i++) {
+            if ((i & 1) == 0) {
+                Collections.reverse(lists.get(i));
             }
         }
-        swap(arr, counter, pivot);
-        return counter;
+
+        System.out.println(JSON.toJSONString(lists));
+
     }
 
-    public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] =temp;
-    }
 
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        List<List<Integer>> list = new ArrayList<>();
+        if (root != null) {
+            queue.add(root);
+        }
+
+        while (!queue.isEmpty()) {
+            List<Integer> sub = new ArrayList<>();
+            for (int i = queue.size(); i > 0; i--) {
+                TreeNode poll = queue.poll();
+                sub.add(poll.val);
+                if (poll.left != null) {
+                    queue.add(poll.left);
+                }
+                if (poll.right != null) {
+                    queue.add(poll.right);
+                }
+            }
+            list.add(sub);
+        }
+        return list;
+    }
 }
