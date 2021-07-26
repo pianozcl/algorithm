@@ -18,39 +18,29 @@ import java.util.*;
 public class OtherTest {
     public static void main(String[] args) {
         TreeNode treeNode = TestStructure.fullBinaryTree();
-        List<List<Integer>> lists = levelOrder(treeNode);
-        for (int i = 0; i < lists.size(); i++) {
-            if ((i & 1) == 0) {
-                Collections.reverse(lists.get(i));
-            }
-        }
-
-        System.out.println(JSON.toJSONString(lists));
+        post(treeNode);
 
     }
 
-
-    public static List<List<Integer>> levelOrder(TreeNode root) {
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        List<List<Integer>> list = new ArrayList<>();
-        if (root != null) {
-            queue.add(root);
+    public static void post(TreeNode root) {
+        if (root == null) {
+            return;
         }
-
-        while (!queue.isEmpty()) {
-            List<Integer> sub = new ArrayList<>();
-            for (int i = queue.size(); i > 0; i--) {
-                TreeNode poll = queue.poll();
-                sub.add(poll.val);
-                if (poll.left != null) {
-                    queue.add(poll.left);
-                }
-                if (poll.right != null) {
-                    queue.add(poll.right);
-                }
+        Stack<TreeNode> s1 = new Stack<>();
+        Stack<TreeNode> s2 = new Stack<>();
+        s1.push(root);
+        while (!s1.isEmpty()) {
+            TreeNode pop = s1.pop();
+            s2.push(pop);
+            if (pop.left != null) {
+                s1.push(pop.left);
             }
-            list.add(sub);
+            if (pop.right != null) {
+                s1.push(pop.right);
+            }
         }
-        return list;
+        while (!s2.isEmpty()) {
+            System.out.println(s2.pop().val);
+        }
     }
 }

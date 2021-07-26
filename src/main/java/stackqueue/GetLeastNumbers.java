@@ -43,6 +43,23 @@ public class GetLeastNumbers {
         return list;
     }
 
+    /**
+     * 简便的写法
+     * @param input
+     * @param k
+     * @return
+     */
+    public ArrayList<Integer> getLeastNumbers(int [] input, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
+        for (int i = 0; i < input.length; i++) {
+            queue.offer(input[i]);
+            if (queue.size() > k) {
+                queue.poll();
+            }
+        }
+        return new ArrayList(queue);
+    }
+
     public static void main(String[] args) {
         ArrayList<Integer> integers = new ArrayList<>();
         integers.add(2);

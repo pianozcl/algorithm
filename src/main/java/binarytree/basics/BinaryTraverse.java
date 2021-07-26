@@ -78,6 +78,15 @@ public class BinaryTraverse {
         }
     }
 
+    /**
+     * 后续遍历
+     * 因为先序遍历的顺序是中左右，所以需要一个栈先弹出中，再压右，再压左
+     *
+     * 而后续遍历的顺序是，左右中，所以第一个栈可以先以先弹出中，再压左，再压右。这样第一个栈弹出的顺序是：中》右》左
+     * 第一个栈弹出的时候，直接压人第二个栈。这样第二个栈再弹出的时候顺序就是：左》右》中
+     *
+     * @param root
+     */
     void postOrderUnRecur(TreeNode root) {
         TreeNode head = root;
         if (head != null) {

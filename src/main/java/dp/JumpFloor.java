@@ -12,11 +12,8 @@ public class JumpFloor {
      * @return
      */
     public int JumpFloor(int target) {
-        if (target == 1) {
-            return 1;
-        }
-        if (target == 2) {
-            return 2;
+        if (target <= 2) {
+            return target;
         }
         int prepre = 1, pre = 2, curr = 0;
         for (int i = 3; i <= target; i++) {
