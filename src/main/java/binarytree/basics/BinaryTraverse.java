@@ -3,6 +3,7 @@ package binarytree.basics;
 import basestructure.TreeNode;
 import util.test.TestStructure;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -62,18 +63,15 @@ public class BinaryTraverse {
     }
 
     void inOrderUnRecur(TreeNode root) {
-        TreeNode head = root;
-        if (head != null) {
-            Stack<TreeNode> stack = new Stack<>();
-            while (!stack.isEmpty() || head != null) {
-                if (head != null) {
-                    stack.push(head);
-                    head = head.left;
-                } else {
-                    head = stack.pop();
-                    System.out.println(head.val);
-                    head = head.right;
-                }
+        Stack<TreeNode> stack = new Stack();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                root = stack.pop();
+                System.out.println(root.val);
+                root = root.right;
             }
         }
     }
