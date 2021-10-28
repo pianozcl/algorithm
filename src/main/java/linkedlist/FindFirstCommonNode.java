@@ -44,7 +44,7 @@ public class FindFirstCommonNode {
      * @param pHead2
      * @return
      */
-    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+    public static ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
         ListNode p1 = pHead1;
         ListNode p2 = pHead2;
         while (p1 != p2) {
@@ -52,5 +52,13 @@ public class FindFirstCommonNode {
             p2 = p2 == null ? pHead1 : p2.next;
         }
         return p1;
+    }
+
+
+    public static void main(String[] args) {
+        ListNode h1 = new ListNode(0);
+        ListNode h2 = new ListNode(1);
+        ListNode node = FindFirstCommonNode(h1, h2);
+        System.out.println(node.val);
     }
 }

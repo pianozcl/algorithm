@@ -13,6 +13,10 @@ public class ListNode {
         this.val = val;
     }
 
+    public ListNode() {
+
+    }
+
     @Override
     public String toString() {
         StringBuffer stringBuffer=new StringBuffer();

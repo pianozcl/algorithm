@@ -1,6 +1,10 @@
 package other.core_java.collections;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -30,5 +34,6 @@ public class TestArrayList {
         }
         long t4 = System.currentTimeMillis();
         System.out.println((t4 - t3));
+
     }
 }

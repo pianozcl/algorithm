@@ -37,28 +37,27 @@ public class EntryNodeOfLoop {
      * @return
      */
     public static ListNode detectCycle(ListNode head) {
-        if (head == null || head.next == null) {
-            return null;
-        }
         ListNode slow = head;
         ListNode fast = head;
-        while (fast != null) {
-            slow = slow.next;
-            if (fast.next != null) {
-                fast = fast.next.next;
-            } else {
+        while (true) {
+            if (fast == null || fast.next == null) {
                 return null;
             }
+            slow = slow.next;
+            fast = fast.next.next;
             if (slow == fast) {
-                slow = head;
-                while (slow != fast) {
-                    slow = slow.next;
-                    fast = fast.next;
-                }
-                return slow;
+                fast = head;
+                break;
             }
         }
-        return null;
+        while (true) {
+            if (slow == fast) {
+                break;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
     }
 
     public boolean hasCycle(ListNode head) {

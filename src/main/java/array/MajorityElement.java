@@ -43,17 +43,18 @@ public class MajorityElement {
     }
 
     public static int majorityElement2(int[] nums) {
-        int x = 0, votes = 0;
+        int vote = 0;
+        int res = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (votes == 0) {
-                x = nums[i];
+            if (vote == 0) {
+                res = nums[i];
             }
-            if (x == nums[i]) {
-                votes += 1;
+            if (res == nums[i]) {
+                vote++;
             } else {
-                votes -= 1;
+                vote--;
             }
         }
-        return x;
+        return res;
     }
 }
